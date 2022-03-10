@@ -154,7 +154,7 @@ void main()
     }
     system("clear");
     printf("GAME OVER");
-    printf("\n");
+    printf(" | ");
     printf("Score: %d", score);
     printf("\n");
     printf("Run ./a.out again to restart.");
