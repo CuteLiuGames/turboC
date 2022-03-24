@@ -1,9 +1,9 @@
 #include<ctype.h>
 #include<graphics.h>
-#include<iostream.h>
+#include<iostream>
 #include<stdlib.h>
-#include<fstream.h>
-#include<conio.h>
+#include<fstream>
+#include"conio.h"
 #include<stdio.h>
 #include<string.h>
 #include<process.h>

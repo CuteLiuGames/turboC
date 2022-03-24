@@ -6,15 +6,15 @@
 and executes the required game according to users wish*/
 
 #include<iostream>
-#include<conio.h>
+#include"conio.h"
 #include<graphics.h>
-#include<stdlib.h>
-#include<string.h>
-#include<ctype.h>
-#include<dos.h>
-
+#include"stdlib.h"
+#include"string.h"
+#include"ctype.h"
+//#include <dos.h>
+using namespace std;
 //functions for hangman
-const int max=6;
+const int amax=6;
 int wg=0;
 void drawh()
 {clrscr();
@@ -55,12 +55,12 @@ int fill(char a,char use[],char str[])
  }
  if(st==1)
  {
-  for(i=0;i<strlen(str);i++)
+  for(int i=0;i<strlen(str);i++)
   {
    if(str[i]==a)
    use[i]=a;
   }
-  if(strcmpi(use,str)==0)
+  if(strcmp(use,str)==0)
   return 3;
   else
   return 1;
@@ -73,11 +73,11 @@ void hangman()
 {
 clrscr();
 cleardevice();
-randomize();
+//random_r();
 int len,t,choice;
 char guessword[100],o,used[100],xword[100],b,userguess[100];
 char words[10][20]={"india","australia","england","germany","france","usa","russia"};
-t=random(7);
+t=random();
 strcpy(guessword,words[t]);
 len=strlen(guessword);
 for(int i=0; i<len;i++)
@@ -100,7 +100,7 @@ else
 clrscr();
 cleardevice();
 label2:
-for(i=0;i<len;i++)
+for(int i=0;i<len;i++)
 {
 if(used[i]=='%')
 cout<<"  __  ";
@@ -108,7 +108,7 @@ else
 cout<<used[i]<<" ";
 }
 cout<<"\n\n\n";
- if(wg==max)
+ if(wg==amax)
 {
 cout<<"\n Better luck next time!"<<endl;
 cout<<"\n The word was:"<<guessword;
@@ -125,13 +125,13 @@ else if(choice==1)
 {
  cout<<"Enter the guessed word: ";
  cin>>userguess;
- if(strcmpi(userguess,guessword)==0)
+ if(strcmp(userguess,guessword)==0)
  cout<<"\n Congrats! \n You have found the word!"<<endl;
  else
  {wg+=1;
   drawh();
   cout<<"Wrong Guess!!\n";
-  cout<<"\n You have"<<max-wg<<"tries left!"<<endl;
+  cout<<"\n You have"<<amax-wg<<"tries left!"<<endl;
   goto label2;
  }
 }
@@ -155,7 +155,7 @@ else if(fill(b,used,guessword)==0)
 wg+=1;
 drawh();
 cout<<"\n Wrong guess!"<<endl;
-cout<<"\n You have "<<max-wg<<" tries left!"<<endl;
+cout<<"\n You have "<<amax-wg<<" tries left!"<<endl;
 goto label2;
 }
 else if(fill(b,used,guessword)==3)
@@ -435,14 +435,14 @@ void drawc(char game[5][10])
 {
  clrscr();
  cleardevice();
- settextstyle(9,0,1);
+ setlinestyle(9,0,1);
  setbkcolor(9);
  setcolor(1);
  outtextxy(250,5,"Connect  4");
- settextstyle(3,0,1);
+ setlinestyle(3,0,1);
  outtextxy(20,120,"   1     2     3     4      5     6     7     8      9    10");
  setcolor(3);
- setfillstyle(1,1);
+ setlinestyle(1,1,0);
  bar(20,150,620,450);
  bar(20,450,30,470);
  bar(10,465,40,470);
@@ -454,17 +454,17 @@ void drawc(char game[5][10])
   if(game[i][j]=='x')
   {
    setcolor(9);
-   setfillstyle(1,9);
+   setlinestyle(1,9,0);
   }
   else if(game[i][j]=='r')
   {
    setcolor(4);
-   setfillstyle(1,4);
+   setlinestyle(1,4,0);
   }
   else if(game[i][j]=='y')
   {
    setcolor(14);
-   setfillstyle(1,14);
+   setlinestyle(1,14,0);
   }
   pieslice(50+(j*60),180+(i*60),0,360,20);
  }
@@ -732,7 +732,7 @@ for(int i=0;i<9;i++)
 g[i]='a';
 label1:
 draw(g);
-_setcursortype(_NORMALCURSOR);
+//_setcursortype(_NORMALCURSOR);
 if(count%2==0)
 cout<<"           Player 1: \n";
 else
@@ -776,13 +776,13 @@ cout<<"\n\n              The match is draw!!!";
 
 }
 
-void main()
+int main()
 {
 	clrscr();
 	int gd=DETECT,gm,c;
 	initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 	setbkcolor(3);
-	settextstyle(10,0,1);
+	setlinestyle(10,0,1);
 	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                         ";
 	outtextxy(30,0,"Welcome!");
 	outtextxy(30,30,"Which game do you want to play?");
@@ -804,4 +804,5 @@ void main()
 	else if(c==5)
 	exit(0);
 	getch();
+	return 0;
 }

@@ -44,7 +44,7 @@ available_tags=" CXX"
 
 # ### BEGIN LIBTOOL CONFIG
 
-# Libtool was configured on host cuteliugames-turboc-nqsmrtcaehq:
+# Libtool was configured on host cuteliugames-turboc-bs237h2325x:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/bash"
@@ -6773,7 +6773,7 @@ build_old_libs=`case $build_libtool_libs in yes) $echo no;; *) $echo yes;; esac`
 # End:
 # ### BEGIN LIBTOOL TAG CONFIG: CXX
 
-# Libtool was configured on host cuteliugames-turboc-nqsmrtcaehq:
+# Libtool was configured on host cuteliugames-turboc-bs237h2325x:
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/bash"
